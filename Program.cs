@@ -1,5 +1,13 @@
+using DemoStoreApp.db;
+using DemoStoreApp.Interface;
+using DemoStoreApp.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace WebApplication3
 {
+    /*
+      Scaffold-DbContext "Server=DESKTOP-H09IM5N\Javor;Database=SPORTSSTORE;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir LocalDbStore 
+     */
     public class Program
     {
         public static void Main(string[] args)
@@ -8,8 +16,21 @@ namespace WebApplication3
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var app_db = builder.Configuration.GetConnectionString("app_db");
+            builder.Services.AddDbContext<SportsStoreContext>
+               (
 
-            var app = builder.Build();
+                options =>
+                {
+                    
+                    options.UseSqlServer(app_db);
+                }
+                
+               );
+            builder.Services.AddTransient<ICategory, ServiceCategory>();
+
+
+         var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

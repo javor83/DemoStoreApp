@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "InsertCategory";
+}
+@model DTO_Category
+<h1>InsertCategory</h1>
+<form asp-action="InsertCategory" asp-controller="Home" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        @Html.DisplayNameFor(x=>x.CategoryName)
+        <input type="hidden" asp-for="@Model.CategoryID"/>
+        <input type="text" asp-for="@Model.CategoryName" />
+        <span asp-validation-for="@Model.CategoryName"></span>
+    </div>
+    <div>
+        <input type="submit" value="Post data !"/>
+    </div>
+</form>
+

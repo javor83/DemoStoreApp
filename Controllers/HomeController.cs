@@ -1,32 +1,55 @@
-using System.Diagnostics;
+
+using DemoStoreApp.Interface;
+using DemoStoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication3.Models;
+
 
 namespace WebApplication3.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ICategory cn = null;
+        //**************************************************************************
+        public HomeController(ILogger<HomeController> logger, ICategory category)
         {
+            this.cn = category;
             _logger = logger;
         }
-
+        //**************************************************************************
         public IActionResult Index()
         {
-            return View();
+            return View(this.cn.List());
         }
 
-        public IActionResult Privacy()
+        //**************************************************************************
+        public IActionResult InsertCategory()
         {
-            return View();
+            DTO_Category data = new DTO_Category()
+            {
+                CategoryName = "your category....",
+                CategoryID = null
+
+            };
+            return View(data);
+        }
+        //**************************************************************************
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> InsertCategory(DTO_Category sender)
+        {
+            if (ModelState.IsValid)
+            {
+                await this.cn.Insert(sender);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(sender);
+            }
+
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //**************************************************************************
     }
 }
