@@ -18,7 +18,14 @@
     {
         <tr>
             <td>@k.CategoryName</td>
-            <td><a class="btn btn-outline-primary" asp-action="Edit" asp-controller="Home" asp-route-id="@k.CategoryID">Edit</a></td>
+            <td>
+               <form method="post" asp-action="Delete" asp-antiforgery="true" asp-controller="Home" asp-route-cid="@k.CategoryID">
+                   <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-controller="Home" asp-route-id="@k.CategoryID">Edit</a>
+
+               </form>
+                
+           </td>
         </tr>   
     }
 </table>
