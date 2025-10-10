@@ -6,5 +6,7 @@ namespace DemoStoreApp.Interface
     {
         IEnumerable<DTO_Category> List();
         Task Insert(DTO_Category sender);
+
+        Task Delete(int id);
     }
 }

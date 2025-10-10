@@ -13,6 +13,17 @@ namespace DemoStoreApp.Services
             this._context = cn;
         }
         //**************************************************************************
+        async Task ICategory.Delete(int id)
+        {
+            var ct = this._context.Categories.Where(x => x.Id == id);
+            if (ct.Any())
+            {
+                this._context.Categories.Remove(ct.First());
+                await this._context.SaveChangesAsync();
+            }
+        }
+
+        //**************************************************************************
         async Task ICategory.Insert(DTO_Category sender)
         {
 
