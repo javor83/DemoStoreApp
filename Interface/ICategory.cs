@@ -8,5 +8,10 @@ namespace DemoStoreApp.Interface
         Task Insert(DTO_Category sender);
 
         Task Delete(int id);
+
+        DTO_Category Extract(int id);
+
+
+        Task Edit(DTO_Category sender);
     }
 }

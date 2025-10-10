@@ -1,6 +1,7 @@
 ﻿using DemoStoreApp.Interface;
 using DemoStoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DemoStoreApp.Controllers
 {
@@ -28,8 +29,39 @@ namespace DemoStoreApp.Controllers
 
         }
 
-
         //**************************************************************************
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            DTO_Category local_data = this.cn.Extract(id);
+            if (local_data != null)
+            {
+               
+                    return View(local_data);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        //**************************************************************************
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(DTO_Category sender)
+        {
+            if (ModelState.IsValid)
+            {
+                await this.cn.Edit(sender);
+                
+                return RedirectToAction("Index", "Category");
+            }
+            else
+                return View(sender);
+
+
+        }
+        //**************************************************************************
+        [HttpGet]
         public IActionResult InsertCategory()
         {
             DTO_Category data = new DTO_Category()

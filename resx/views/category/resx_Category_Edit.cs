@@ -1,9 +1,9 @@
 ﻿namespace DemoStoreApp.resx.views.category
 {
-    public class resx_Category_Insert
+    public class resx_Category_Edit
     {
-        public const string NewCategory = "Нова категория";
         public const string Save = "Запис";
         public const string Cancel = "Отказ";
+        public const string EditCaption = "Редакция на категория";
     }
 }

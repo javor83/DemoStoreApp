@@ -10,9 +10,15 @@
         <tr>
             <td>@k.CategoryName</td>
             <td>
-                <form method="post" asp-action="Delete" asp-antiforgery="true" asp-controller="Category" asp-route-cid="@k.CategoryID">
-                    <input type="submit" value="@resx_Category_Index.Delete" class="btn btn-danger" />
-                    <a class="btn btn-outline-primary" asp-action="Edit" asp-controller="Category" asp-route-id="@k.CategoryID">@resx_Category_Index.Edit</a>
+                <form 
+                    method="post"
+                    asp-action="Delete" 
+                asp-antiforgery="true"
+                asp-controller="Category" 
+                asp-route-cid="@k.CategoryID"
+                      onsubmit="@string.Format(resx_Category_Index.confirm,k.CategoryName)">
+                    <input type="submit" value="@resx_Category_Index.Delete" class="@const_button.Danger" />
+                    <a class="@const_button.Outline" asp-action="Edit" asp-controller="Category" asp-route-id="@k.CategoryID">@resx_Category_Index.Edit</a>
 
                 </form>
 
@@ -22,7 +28,7 @@
 </table>
 <div>
     
-    <a asp-action="InsertCategory" asp-controller="Category" class="btn btn-outline-primary">
+    <a asp-action="InsertCategory" asp-controller="Category" class="@const_button.Outline">
         @resx_Category_Index.New
     </a>
 </div>

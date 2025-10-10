@@ -1,0 +1,15 @@
+﻿<h1 class="text-center"> @resx_Category_Edit.EditCaption</h1>
+@model DTO_Category
+<form method="post" asp-action="Edit" asp-controller="Category" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x=>x.CategoryName)
+        <input type="hidden" asp-for="@Model.CategoryID" />
+        <input type="text" asp-for="@Model.CategoryName" class="form-control"/>
+        <span asp-validation-for="@Model.CategoryName" class="@const_button.InvalidField"></span>
+    </div>
+    <div class="mb-3 mt-3">
+        <input type="submit" value="@resx_Category_Edit.Save" class="@const_button.GeneralButton" />
+        <a asp-action="Index" asp-controller="Category" class="@const_button.Outline">@resx_Category_Edit.Cancel</a>
+    </div>
+</form>

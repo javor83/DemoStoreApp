@@ -16,7 +16,11 @@ namespace DemoStoreApp.CustomAttributes
             if (value != null)
             {
                 string k = value as string;
-                result = k.ToUpperInvariant().StartsWith(this.mPrefix.ToUpperInvariant());
+                if (k.Length > 0)
+                {
+                    result = Char.IsUpper(k[0]);
+                }
+                //result = k.ToUpperInvariant().StartsWith(this.mPrefix.ToUpperInvariant());
             }
             return result;
         }

@@ -4,8 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DemoStoreApp.Models
 {
+    
+
     public class DTO_Category
     {
+
+        
         [Required(AllowEmptyStrings =false,ErrorMessage =resx_DTO_Category.Required_CategoryName)]
         
         [StringLength(50,MinimumLength =5,ErrorMessage = resx_DTO_Category.StringLength_CategoryName)]
@@ -13,6 +17,7 @@ namespace DemoStoreApp.Models
         [FirstLetter("lidl",ErrorMessage = resx_DTO_Category.FirstLetter_CategoryName)]
         public string? CategoryName { get; set; }
 
+       
         public int? CategoryID { get; set; }
 
     }
