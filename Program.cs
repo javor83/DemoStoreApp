@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace WebApplication3
 {
     /*
-      Scaffold-DbContext "Server=DESKTOP-H09IM5N\Javor;Database=SPORTSSTORE;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir LocalDbStore 
+      
+
+      Scaffold-DbContext "Server=DESKTOP-H09IM5N;Database=SportsStore;Trusted_Connection=True;TrustServerCertificate=True;  " Microsoft.EntityFrameworkCore.SqlServer -OutputDir LocalDbStore -force
      */
     public class Program
     {

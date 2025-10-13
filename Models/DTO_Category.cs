@@ -1,5 +1,5 @@
 ﻿using DemoStoreApp.CustomAttributes;
-using DemoStoreApp.resx.models;
+using UIText;
 using System.ComponentModel.DataAnnotations;
 
 namespace DemoStoreApp.Models
