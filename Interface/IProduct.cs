@@ -4,6 +4,8 @@ namespace DemoStoreApp.Interface
 {
     public interface IProduct
     {
-        void Insert(DTO_Product sender);
+
+
+        IEnumerable<DTO_Product_Select> List();
     }
 }

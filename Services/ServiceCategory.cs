@@ -1,5 +1,6 @@
-﻿using DemoStoreApp.db;
+﻿
 using DemoStoreApp.Interface;
+using DemoStoreApp.LocalDbStore;
 using DemoStoreApp.Models;
 
 namespace DemoStoreApp.Services

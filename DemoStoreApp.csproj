@@ -24,11 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="db\" />
-    <Folder Include="wwwroot\image_preview\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\UIText\UIText.csproj" />
   </ItemGroup>
 

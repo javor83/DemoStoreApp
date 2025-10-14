@@ -15,7 +15,7 @@ public partial class Product
 
     public int? Pcategory { get; set; }
 
-    public string? Preview { get; set; }
-
     public virtual Category? PcategoryNavigation { get; set; }
+
+    public virtual ICollection<ProductPreview> ProductPreviews { get; set; } = new List<ProductPreview>();
 }

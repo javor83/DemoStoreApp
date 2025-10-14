@@ -1,5 +1,5 @@
-using DemoStoreApp.db;
 using DemoStoreApp.Interface;
+using DemoStoreApp.LocalDbStore;
 using DemoStoreApp.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,9 +30,9 @@ namespace WebApplication3
                 
                );
             builder.Services.AddTransient<ICategory, ServiceCategory>();
+            builder.Services.AddTransient<IProduct, ServiceProduct>();
 
-
-         var app = builder.Build();
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
