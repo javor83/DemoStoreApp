@@ -19,16 +19,8 @@ namespace WebApplication3
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             var app_db = builder.Configuration.GetConnectionString("app_db");
-            builder.Services.AddDbContext<SportsStoreContext>
-               (
-
-                options =>
-                {
-                    
-                    options.UseSqlServer(app_db);
-                }
-                
-               );
+            builder.Services.AddSqlServer<SportsStoreContext>(app_db);
+            //builder.Services.AddDbContext<SportsStoreContext>(options => {options.UseSqlServer(app_db);});
             builder.Services.AddTransient<ICategory, ServiceCategory>();
             builder.Services.AddTransient<IProduct, ServiceProduct>();
 
