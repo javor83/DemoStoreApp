@@ -2,3 +2,12 @@
     width:150px;
     
 }
+.input-validation-error {
+    border-color:red;
+    color:red;
+    
+}
+
+.validation-summary-errors {
+    color: red;
+}

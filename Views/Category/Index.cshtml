@@ -26,9 +26,12 @@
         </tr>
     }
 </table>
-<div>
+<div class="text-center">
     
-    <a asp-action="InsertCategory" asp-controller="Category" class="@const_button.Outline">
+    <a asp-action="InsertCategory" asp-controller="Category" class="@const_button.GeneralButton">
         @resx_Category_Index.New
+    </a>
+    <a asp-action="Index" asp-controller="Home" class="@const_button.GeneralButton">
+        @resx_Category_Index.MainMenu
     </a>
 </div>

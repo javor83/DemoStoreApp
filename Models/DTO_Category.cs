@@ -14,7 +14,7 @@ namespace DemoStoreApp.Models
         
         [StringLength(50,MinimumLength =5,ErrorMessage = resx_DTO_Category.StringLength_CategoryName)]
         [Display(Name = resx_DTO_Category.Display_CategoryName)]
-        [FirstLetter("lidl",ErrorMessage = resx_DTO_Category.FirstLetter_CategoryName)]
+        [FirstLetter(ErrorMessage = resx_DTO_Category.FirstLetter_CategoryName)]
         public string? CategoryName { get; set; }
 
        

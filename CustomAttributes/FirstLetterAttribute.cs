@@ -4,10 +4,10 @@ namespace DemoStoreApp.CustomAttributes
 {
     public class FirstLetterAttribute:ValidationAttribute
     {
-        private readonly string mPrefix = "";
-        public FirstLetterAttribute(string pr)
+       
+        public FirstLetterAttribute()
         { 
-            this.mPrefix = pr;
+          
         }
 
         public override bool IsValid(object? value)
