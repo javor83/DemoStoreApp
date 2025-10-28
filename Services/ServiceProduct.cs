@@ -2,7 +2,7 @@
 using DemoStoreApp.LocalDbStore;
 using DemoStoreApp.Models;
 using System.Text.Json;
-using UIText;
+using DemoStoreApp.UIText;
 
 namespace DemoStoreApp.Services
 {

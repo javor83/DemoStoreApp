@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.Host.Mef;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using UIText;
+using DemoStoreApp.UIText;
 
 namespace DemoStoreApp.Models
 {
