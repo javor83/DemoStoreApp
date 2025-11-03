@@ -17,8 +17,9 @@ namespace RestoreApp.Controllers
         //********************************************************************************
         public IActionResult Index()
         {
-
-            return View(this._product.List());
+            var list = this._product.List();
+            
+            return View(list);
         }
         //********************************************************************************
 

@@ -21,7 +21,7 @@
                 <form method="post" asp-action="Delete" asp-controller="Product" asp-antiforgery="true">
                     <input type="hidden" name="productid" value="@k.ID"/>
                     <input type="submit" class="@const_button.Danger" value="@resx_Product_Index.Delete"/>
-                    <a asp-action="Edit" asp-controller="Product" asp-route-id="@k.ID" class="@const_button.Outline">@resx_Product_Index.Edit</a>
+                    <a asp-action="Edit" asp-controller="Product" asp-route-product_id="@k.ID" class="@const_button.Outline">@resx_Product_Index.Edit</a>
                 </form>
             </td>
          </tr>
