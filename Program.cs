@@ -9,7 +9,7 @@ namespace RestoreApp
     {
         /*
 
-
+        ok
         Scaffold-DbContext "Server=DESKTOP-H09IM5N;Database=SportsStore;Trusted_Connection=True;TrustServerCertificate=True;  " Microsoft.EntityFrameworkCore.SqlServer -OutputDir LocalDbStore -force
        */
         public static void Main(string[] args)
