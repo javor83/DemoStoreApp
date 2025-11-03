@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DTO_Product_Select>
+<table class="@const_button.Table">
+    <tr>
+        <th class ="text-center">@resx_Product_Index.Name</th>
+        <th class="text-center">@resx_Product_Index.Preview</th>
+        <th></th>
+    </tr>
+    @foreach (var k in Model)
+    {
+         <tr>
+            <td>
+                <p class="text-center"><b>@k.Name</b></p>
+                <p><em>@k.Description</em></p>
+                <p><b>@resx_Product_Index.Price</b> @k.Price.Money()</p>
+                <p><b>@resx_Product_Index.Category</b> @k.CategoryName</p>
+            </td>
+            <td>
+               <img src="@k.Preview.FirstOrDefault(const_button.placeholder).Preview()" class="img-thumbnail width_preview_image d-block mx-auto" />
+            </td>
+            <td>
+                <form method="post" asp-action="Delete" asp-controller="Product" asp-antiforgery="true">
+                    <input type="hidden" name="productid" value="@k.ID"/>
+                    <input type="submit" class="@const_button.Danger" value="@resx_Product_Index.Delete"/>
+                    <a asp-action="Edit" asp-controller="Product" asp-route-id="@k.ID" class="@const_button.Outline">@resx_Product_Index.Edit</a>
+                </form>
+            </td>
+         </tr>
+    }
+</table>
+<div class="text-center mt-1">
+    <a asp-controller="Product" asp-action="Insert" class="@const_button.GeneralButton">@resx_Product_Index.NewProduct</a>
+    <a asp-action="Index" asp-controller="Home" class="@const_button.GeneralButton">
+        @resx_Product_Index.MainMenu
+    </a>
+</div>

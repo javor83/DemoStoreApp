@@ -1,0 +1,17 @@
+﻿@model DTO_Category
+<h1 class="text-center">@resx_Category_Insert.NewCategory</h1>
+<form method="post" asp-controller="Category" asp-action="InsertCategory" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.CategoryName)
+        <input type="hidden" asp-for="@Model.CategoryID" />
+        <input type="text" class="form-control" asp-for="@Model.CategoryName" />
+        <span class="@const_button.InvalidField"
+            asp-validation-for="@Model.CategoryName"></span>
+    </div>
+    <div class="mb-3 mt-3">
+        <input type="submit" value="@resx_Category_Insert.Save" class="btn btn-primary"/>
+        <a asp-action="Index" asp-controller="Category" class="btn btn-outline-info">@resx_Category_Insert.Cancel</a>
+     
+    </div>
+</form>

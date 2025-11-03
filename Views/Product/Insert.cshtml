@@ -1,0 +1,56 @@
+﻿
+@{
+    var vlist = ViewBag.category as IEnumerable<DTO_Category>;
+}
+
+<h1 class="text-center">@resx_Product_Insert.NewProduct</h1>
+@model DTO_Product_Insert
+<form 
+    method="post"
+    asp-action="Insert" 
+    asp-controller="Product" 
+    asp-antiforgery="true" 
+    enctype="multipart/form-data">
+    
+   
+    
+   
+   
+    <div class="mb-3 mt-3" asp-validation-summary="All">
+        
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.Name)
+        <input type="text" class="form-control" asp-for="@Model.Name"/>
+    </div>
+    <div class="mb-3 mt-3">
+         @Html.DisplayNameFor(x=>x.Description)
+        <textarea asp-for="@Model.Description" class="form-control">
+
+        </textarea>
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.Price)
+        <input type="text" class="form-control" asp-for="@Model.Price" />
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.CategoryID)
+        <select asp-for="@Model.CategoryID" class="form-select">
+            <option value=@string.Empty>@resx_Product_Insert.SelectCategory</option>
+            @foreach (var k in vlist)
+            {
+                  <option value="@k.CategoryID">@k.CategoryName</option> 
+            }
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.ListPreview)
+        <input type="file" multiple asp-for="@Model.ListPreview" />
+    </div>
+    <div class="mb-3 mt-3 text-center">
+        <input type="submit" value="@resx_Product_Insert.SaveProduct" class="@const_button.GeneralButton d-inline" />
+        <a asp-action="Index" asp-controller="Product" class="@const_button.Outline d-inline">@resx_Product_Insert.ListProduct</a>
+    </div>
+    </form>
+
+

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DTO_Category>
+<h1 class="text-center">@resx_Category_Index.ListAll</h1>
+<table class="@const_button.Table">
+    <tr>
+        <th>@resx_Category_Index.CategoryName</th>
+        <th></th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.CategoryName</td>
+            <td>
+                <form 
+                    method="post"
+                    asp-action="Delete" 
+                asp-antiforgery="true"
+                asp-controller="Category" 
+                asp-route-cid="@k.CategoryID"
+                      onsubmit="@string.Format(resx_Category_Index.confirm,k.CategoryName)">
+                    <input type="submit" value="@resx_Category_Index.Delete" class="@const_button.Danger" />
+                    <a class="@const_button.Outline" asp-action="Edit" asp-controller="Category" asp-route-id="@k.CategoryID">@resx_Category_Index.Edit</a>
+
+                </form>
+
+            </td>
+        </tr>
+    }
+</table>
+<div class="text-center">
+    
+    <a asp-action="InsertCategory" asp-controller="Category" class="@const_button.GeneralButton">
+        @resx_Category_Index.New
+    </a>
+    <a asp-action="Index" asp-controller="Home" class="@const_button.GeneralButton">
+        @resx_Category_Index.MainMenu
+    </a>
+</div>
