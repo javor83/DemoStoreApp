@@ -13,12 +13,9 @@ namespace RestoreApp.Models
     {
         //кой продукт ще редактираме, скрито поле
         public int ProductId { get; set; }
-        //*********************************************************************
-        //кое изображение на продукта ще редактираме, скрито поле
-        public int ImageID { get; set; }
-        //*********************************************************************
-        //все пак  да видим файла в img src
-        public string ImageName { get; set; }
+        
+        
+        
         //*********************************************************************
         [Required(ErrorMessage = resx_DTO_Product.Required_Name, AllowEmptyStrings = false)]
         [DisplayName(resx_DTO_Product.Display_Name)]
@@ -40,10 +37,10 @@ namespace RestoreApp.Models
         [DisplayName(resx_DTO_Product.Display_Category)]
         public int? CategoryID { get; set; }
         //*********************************************************************
-
+      
         //кое ще е новото изображение, не е задължително да качваме
         [DisplayName(resx_DTO_Product.Display_PreviewUpload)]
-        public IFormFile? ListPreview { get; set; }
+        public IEnumerable<IFormFile>? ListPreview { get; set; }
 
         //*********************************************************************
     }

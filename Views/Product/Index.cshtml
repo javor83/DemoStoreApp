@@ -15,7 +15,7 @@
                 <p><b>@resx_Product_Index.Category</b> @k.CategoryName</p>
             </td>
             <td>
-               <img src="@k.Preview.FirstOrDefault(const_button.placeholder).Preview()" class="img-thumbnail width_preview_image d-block mx-auto" />
+                <img src="@k.Preview.FirstOrDefault(const_button.placeholder).ImgHTML()" class="img-thumbnail width_preview_image d-block mx-auto" />
             </td>
             <td>
                 <form method="post" asp-action="Delete" asp-controller="Product" asp-antiforgery="true">

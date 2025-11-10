@@ -35,17 +35,38 @@ namespace RestoreApp.Controllers
             bool find_product = this._product.FindByID(product_id);
             if(find_product)
             {
-
+                DTO_Product_Edit current_product = this._product.SelectedProduct(product_id);
                 ViewBag.image_preview = new DTO_Product_Edit_ViewBag()
                 {
                     ListCategory = this._category.List(),
                     UploadedImages = this._product.Preview(product_id)
+                   
                 };
 
-                return Json(ViewBag.image_preview);
+                return View(current_product);
             }
             else
                 return NotFound("no product");
+        }
+        //********************************************************************************
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Edit(DTO_Product_Edit sender)
+        {
+            if (ModelState.IsValid)
+            {
+                this._product.Update(sender);
+                return RedirectToAction("Index", "Product");
+            }
+            else
+            {
+                ViewBag.image_preview = new DTO_Product_Edit_ViewBag()
+                {
+                    ListCategory = this._category.List(),
+                    UploadedImages = this._product.Preview(sender.ProductId)
+
+                };
+                return View(sender);
+            }
         }
 
 

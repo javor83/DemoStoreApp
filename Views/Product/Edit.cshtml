@@ -1,0 +1,60 @@
+﻿<!--
+ current_product = this._product.SelectedProduct(product_id);
+                 = new DTO_Product_Edit_ViewBag()
+                {
+                    ListCategory = this._category.List(),
+                    UploadedImages = this._product.Preview(product_id),
+
+                };
+-->
+@model DTO_Product_Edit
+@{
+    
+    DTO_Product_Edit_ViewBag elements_view = ViewBag.image_preview as DTO_Product_Edit_ViewBag;
+}
+
+<h1>@resx_Product_Edit.EditProduct</h1>
+<form method="post" asp-antiforgery="true" asp-action="Edit" asp-controller="Product" enctype="multipart/form-data">
+    <div asp-validation-summary="All"></div>
+    <input type="hidden" asp-for="@Model.ProductId"/>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.Name)
+        <input type="text" class="form-control" asp-for="@Model.Name" />
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.Description)
+        <textarea asp-for="@Model.Description" class="form-control">
+
+        </textarea>
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.Price)
+        <input type="text" class="form-control" asp-for="@Model.Price" />
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.CategoryID)
+        <select asp-for="@Model.CategoryID" class="form-select">
+            <option value=@string.Empty>@resx_Product_Insert.SelectCategory</option>
+            @foreach (var k in elements_view.ListCategory)
+            {
+                <option value="@k.CategoryID">@k.CategoryName</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        @Html.DisplayNameFor(x => x.ListPreview)
+    </div>
+    <div class="mb-3 mt-3 text-center">
+       
+        @foreach (var k in elements_view.UploadedImages)
+        {
+            
+                <img src="@k.Preview.ImgHTML()"  class="img-thumbnail d-inline"/>
+
+        }
+    </div>
+    <div class="mb-3 mt-3 text-center">
+        <input type="submit" value="@resx_Product_Insert.SaveProduct" class="@const_button.GeneralButton d-inline" />
+        <a asp-action="Index" asp-controller="Product" class="@const_button.Outline d-inline">@resx_Product_Insert.ListProduct</a>
+    </div>
+</form>

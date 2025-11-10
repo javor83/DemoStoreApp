@@ -16,6 +16,8 @@ namespace RestoreApp.Interface
 
 
         DTO_Product_Edit SelectedProduct(int? id);
+
+        void Update(DTO_Product_Edit sender);
     }
 
 

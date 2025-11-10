@@ -71,9 +71,21 @@ namespace RestoreApp.Services
         //*************************************************
         DTO_Product_Edit IProduct.SelectedProduct(int? id)
         {
-            DTO_Product_Edit result = new DTO_Product_Edit();
-           
             
+           
+            var query = this._context.Products.Where(x => x.Id == id.Value).First();
+            DTO_Product_Edit result = new DTO_Product_Edit()
+            {
+                ProductId = query.Id,
+                CategoryID = query.Pcategory,
+                Description = query.Pdesc,
+                Price = query.Price,
+                Name = query.Pname
+            };
+
+
+
+
             return result;
         }
 
@@ -107,6 +119,22 @@ namespace RestoreApp.Services
             }
             this._context.Products.Add(db_product);
             this._context.SaveChanges();
+        }
+        //*************************************************
+        void IProduct.Update(DTO_Product_Edit sender)
+        {
+            Product p = this._context.Products.Where(x => x.Id == sender.ProductId).First();
+            if (p != null)
+            {
+                p.Price = sender.Price;
+                p.Pname = sender.Name;
+                p.Pdesc = sender.Description;
+                p.Pcategory = sender.CategoryID;
+
+
+
+                this._context.SaveChanges();
+            }
         }
 
         //*************************************************

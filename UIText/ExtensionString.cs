@@ -8,10 +8,11 @@ namespace RestoreApp.UIText
 {
     public static class ExtensionString
     {
-        public static string Preview(this string sender)
+        public static string ImgHTML(this string sender)
         {
-            return $"./{const_button.preview_folder}/{sender}";
+            return $"/{const_button.preview_folder}/{sender}";
         }
 
+       
     }
 }
